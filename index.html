@@ -3,34 +3,56 @@
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Misi Wartawan Cilik | BM Tahun 5</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Misi Wartawan Cilik 2.0</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#080e20;color:#edf3ff;font-family:Arial,sans-serif}
-main{max-width:650px;margin:auto;padding:18px}
-header{text-align:center;padding:26px 12px}
-h1{font-size:29px;color:#f7d477;margin:10px 0}
-h2{font-size:20px}
-p{line-height:1.8}
-.card{background:#151f37;border:1px solid #34435d;border-radius:20px;padding:20px;margin-bottom:17px;box-shadow:0 8px 24px #0003}
-.tag{color:#f7d477;font-weight:bold;font-size:12px;letter-spacing:1px}
-input,select{width:100%;padding:14px;margin:8px 0 15px;border-radius:12px;background:#0b1327;color:white;border:1px solid #536482;font-size:16px}
-button{background:linear-gradient(120deg,#f5c75d,#eaa73d);color:#142033;border:0;border-radius:12px;padding:15px;font-weight:800;font-size:16px;cursor:pointer;width:100%;margin-top:10px}
-button:disabled{opacity:.45}
-.option{display:block;background:#23314c;border:1px solid #455775;border-radius:12px;margin:9px 0;padding:13px;cursor:pointer}
-.option:has(input:checked){border:2px solid #f5c75d;background:#39405a}
-.option input{width:auto;margin:0 10px 0 0}
+body{
+ margin:0;background:#080e20;color:#edf3ff;
+ font-family:Arial,Helvetica,sans-serif
+}
+main{max-width:650px;margin:auto;padding:16px}
+header{text-align:center;padding:27px 8px}
+h1{color:#f7d477;font-size:29px}
+h2{font-size:21px}
+p{line-height:1.75}
+.card{
+ background:linear-gradient(140deg,#192640,#101a30);
+ border:1px solid #344661;border-radius:22px;
+ padding:20px;margin-bottom:16px;
+ box-shadow:0 12px 30px #0003
+}
+.tag{color:#f7d477;font-size:12px;font-weight:bold}
+input[type=text]{
+ width:100%;padding:15px;background:#0b1327;
+ border:1px solid #556581;border-radius:12px;
+ color:white;font-size:16px;margin:8px 0
+}
+button{
+ width:100%;border:0;border-radius:13px;
+ background:linear-gradient(120deg,#ffe19a,#daa33d);
+ color:#182337;font-weight:bold;font-size:16px;
+ padding:15px;margin-top:12px;cursor:pointer
+}
+button:disabled{opacity:.5}
+.option{
+ display:block;padding:14px;margin:10px 0;
+ background:#263550;border:1px solid #4c5b78;
+ border-radius:12px;cursor:pointer
+}
+.option:has(input:checked){
+ background:#394663;border:2px solid #efc56b
+}
+.option input{margin-right:10px}
+.progress{height:10px;background:#26334b;border-radius:10px}
+#bar{height:100%;width:0;background:#e9bf5c;transition:.2s}
 .hidden{display:none}
-.progress{height:10px;background:#283650;border-radius:15px;overflow:hidden}
-#bar{height:100%;background:#f5c75d;width:0;transition:.2s}
-small{color:#b6c4df}
-.good{color:#67dfac}
-.bad{color:#ff9e9e}
-#feedback{margin-top:15px;line-height:1.7}
-.report{background:#fff;color:#1f2937;border-radius:14px;padding:18px;line-height:2}
-.report h3{text-align:center;text-transform:uppercase}
-.report p{text-align:justify}
+.notice{
+ padding:15px;border-radius:12px;
+ background:#253955;margin-top:16px;line-height:1.7
+}
+.good{color:#76e4b0}
+small{color:#b9c7df}
 </style>
 </head>
 <body>
@@ -38,15 +60,22 @@ small{color:#b6c4df}
 <header>
 <div class="tag">BAHASA MELAYU TAHUN 5</div>
 <h1>📰 MISI WARTAWAN CILIK</h1>
-<p>Cabaran Melengkapkan Karangan Jenis Laporan</p>
+<p>Melengkapkan Karangan Jenis Laporan</p>
 </header>
 
 <section id="start" class="card">
-<h2>Selamat Datang, Wartawan!</h2>
-<p>Lengkapkan laporan bertajuk <b>Program Gotong-royong Perdana Sekolah</b>.</p>
-<input id="nama" placeholder="Nama penuh murid">
-<input id="kelas" placeholder="Kelas">
-<p>20 soalan • 3 aras • 100 markah</p>
+<h2>Selamat Datang!</h2>
+<p>
+Lengkapkan laporan bertajuk
+<b>Program Gotong-royong Perdana Sekolah</b>.
+</p>
+<label for="nama">Nama murid</label>
+<input type="text" id="nama" maxlength="100"
+placeholder="Nama penuh">
+<label for="kelas">Kelas</label>
+<input type="text" id="kelas" maxlength="50"
+placeholder="Contoh: 5 Ibnu Battuta">
+<p>20 soalan | 100 markah | 3 aras</p>
 <button onclick="mula()">MULA MISI 🚀</button>
 </section>
 
@@ -57,27 +86,37 @@ small{color:#b6c4df}
 <div class="progress"><div id="bar"></div></div>
 <p id="ayat"></p>
 <div id="pilihan"></div>
-<div id="feedback"></div>
-<button id="next" onclick="seterusnya()" disabled>SETERUSNYA →</button>
+<button id="next" onclick="seterusnya()" disabled>
+SETERUSNYA →
+</button>
 </div>
 </section>
 
 <section id="result" class="hidden">
-<div class="card" style="text-align:center">
-<div class="tag">MISI TAMAT</div>
+<div class="card">
+<div class="tag">MISI SELESAI</div>
 <h1 id="markah"></h1>
 <h2 id="pujian"></h2>
-<p id="rekod"></p>
+<p id="murid"></p>
+<p id="pecahan"></p>
+
+<div id="status" class="notice" aria-live="polite">
+Keputusan sedang disediakan.
+</div>
+
+<button id="send" onclick="hantar()">
+HANTAR MARKAH KE GURU
+</button>
 <button onclick="salin()">SALIN KEPUTUSAN</button>
-<button onclick="lihat()">LIHAT KARANGAN LENGKAP</button>
 <button onclick="location.reload()">MAIN SEMULA</button>
 </div>
-<div id="laporan" class="report hidden"></div>
 </section>
 </main>
 
 <script>
-// Setiap item: ayat, pilihan jawapan, indeks jawapan betul.
+const API_URL = "https://script.google.com/macros/s/AKfycbwyKRlLrVb2G0Dhae-LtHLzAy044sI5CeQGYKCPwPMYGzS0npK_r5qdEH3SQISKfmtm/exec";
+
+// 20 soalan sama seperti versi pertama.
 const soalan=[
 ["Pada hari Sabtu yang lalu, sekolah kami telah ______ Program Gotong-royong Perdana.",["mengadakan","melupakan","meninggalkan","menutup"],0],
 ["Program tersebut diadakan di kawasan ______.",["pasar","sekolah","hospital","stadium"],1],
@@ -86,7 +125,6 @@ const soalan=[
 ["Guru besar memberikan ______ sebelum aktiviti dimulakan.",["hukuman","taklimat","hadiah","cuti"],1],
 ["Murid-murid dibahagikan kepada beberapa ______.",["bangunan","kumpulan","kenderaan","daerah"],1],
 ["Kami membawa penyapu, penyodok dan ______ untuk membersihkan kawasan sekolah.",["komputer","beg sekolah","penyapu lidi","televisyen"],2],
-
 ["Setiap kumpulan diberikan ______ yang berbeza oleh guru bertugas.",["tugasan","hukuman","peperiksaan","permainan"],0],
 ["Kami membersihkan kawasan taman ______ supaya kelihatan lebih ceria.",["perumahan","sekolah","perindustrian","perdagangan"],1],
 ["Sampah sarap dikumpulkan lalu dimasukkan ke dalam ______.",["beg pakaian","kotak pensel","plastik sampah","laci meja"],2],
@@ -94,7 +132,6 @@ const soalan=[
 ["Guru-guru turut ______ murid sepanjang aktiviti berlangsung.",["mengabaikan","membimbing","meninggalkan","mengejek"],1],
 ["Kami bekerjasama agar semua tugasan dapat disiapkan dengan ______.",["lambat","cuai","lancar","sukar"],2],
 ["Selepas selesai bekerja, kami menikmati ______ yang disediakan oleh pihak sekolah.",["jamuan ringan","buku latihan","peralatan sukan","alat tulis"],0],
-
 ["Aktiviti ini dapat ______ semangat kerjasama dalam kalangan warga sekolah.",["melemahkan","memupuk","menghapuskan","menghalang"],1],
 ["Selain menceriakan kawasan sekolah, program ini dapat ______ kesedaran tentang kebersihan.",["meningkatkan","mengurangkan","melupakan","menjejaskan"],0],
 ["Setiap peserta menunjukkan ______ yang tinggi ketika menjalankan tugas.",["keengganan","kecuaian","komitmen","kemarahan"],2],
@@ -103,83 +140,162 @@ const soalan=[
 ["Kesimpulannya, program ini bukan sahaja menceriakan sekolah, malah dapat ______ hubungan antara murid dengan guru.",["merenggangkan","mengeratkan","memutuskan","mengasingkan"],1]
 ];
 
-let index=0,skor=0,jawapan=[];
 const $=id=>document.getElementById(id);
+let index=0;
+let jawapan=[];
+let skor=0;
+let idCubaan="";
+let sudahHantar=false;
+let sedangHantar=false;
 
 function mula(){
-if(!$("nama").value.trim()||!$("kelas").value.trim()){
-alert("Sila isi nama dan kelas dahulu.");return;
+ if(!$("nama").value.trim()||!$("kelas").value.trim()){
+  alert("Isi nama dan kelas dahulu.");
+  return;
+ }
+ if(API_URL.includes("PASTE_URL")){
+  alert("Guru belum menetapkan URL Apps Script.");
+  return;
+ }
+ idCubaan=crypto.randomUUID();
+ $("start").classList.add("hidden");
+ $("game").classList.remove("hidden");
+ papar();
 }
-$("start").classList.add("hidden");
-$("game").classList.remove("hidden");
-papar();
-}
+
 function papar(){
-const s=soalan[index];
-$("bil").textContent="Soalan "+(index+1)+" / 20";
-$("aras").textContent=index<7?"🟢 ARAS LEMAH":index<14?"🟡 ARAS SEDERHANA":"🔴 ARAS TINGGI";
-$("bar").style.width=(index/20*100)+"%";
-$("ayat").textContent=s[0];
-$("pilihan").innerHTML="";
-$("feedback").innerHTML="";
-$("next").disabled=true;
-s[1].forEach((teks,i)=>{
-const label=document.createElement("label");
-label.className="option";
-const radio=document.createElement("input");
-radio.type="radio";radio.name="jawab";radio.value=i;
-radio.onchange=()=>pilih(i);
-label.append(radio,document.createTextNode(String.fromCharCode(65+i)+". "+teks));
-$("pilihan").append(label);
-});
-$("next").textContent=index===19?"LIHAT KEPUTUSAN":"SETERUSNYA →";
+ const s=soalan[index];
+ $("bil").textContent="Soalan "+(index+1)+" / 20";
+ $("aras").textContent=index<7?"🟢 ARAS LEMAH":
+ index<14?"🟡 ARAS SEDERHANA":"🔴 ARAS TINGGI";
+ $("bar").style.width=(index/20*100)+"%";
+ $("ayat").textContent=s[0];
+ $("pilihan").replaceChildren();
+ $("next").disabled=true;
+
+ s[1].forEach((teks,i)=>{
+  const label=document.createElement("label");
+  label.className="option";
+  const input=document.createElement("input");
+  input.type="radio";
+  input.name="jawapan";
+  input.value=i;
+  input.onchange=()=>{
+   jawapan[index]=i;
+   $("next").disabled=false;
+  };
+  label.append(input,
+   document.createTextNode(
+    String.fromCharCode(65+i)+". "+teks
+   )
+  );
+  $("pilihan").append(label);
+ });
+ $("next").textContent=index===19?
+ "TAMATKAN MISI":"SETERUSNYA →";
 }
-function pilih(i){
-jawapan[index]=i;
-$("next").disabled=false;
-const betul=soalan[index][2];
-$("feedback").innerHTML=i===betul?
-'<span class="good">✓ Jawapan dipilih. Teruskan!</span>':
-'<span>Jawapan diterima. Teruskan!</span>';
-}
+
 function seterusnya(){
-if(jawapan[index]===undefined)return;
-index++;
-if(index===20){tamat();return;}
-papar();
+ if(jawapan[index]===undefined)return;
+ index++;
+ if(index===20){
+  tamat();
+ }else{
+  papar();
+ }
 }
+
 function tamat(){
-skor=soalan.reduce((n,s,i)=>n+(jawapan[i]===s[2]?5:0),0);
-$("game").classList.add("hidden");
-$("result").classList.remove("hidden");
-$("markah").textContent=skor+"/100";
-$("pujian").textContent=skor>=80?"🏆 Wartawan Cemerlang!":skor>=50?"⭐ Usaha Yang Baik!":"💪 Teruskan Berlatih!";
-$("rekod").textContent=$("nama").value+" | "+$("kelas").value;
+ skor=soalan.reduce((n,s,i)=>
+  n+(jawapan[i]===s[2]?5:0),0
+ );
+ $("game").classList.add("hidden");
+ $("result").classList.remove("hidden");
+ $("markah").textContent=skor+"/100";
+ $("pujian").textContent=skor>=80?
+ "🏆 Cemerlang!":skor>=60?
+ "⭐ Bagus!":"💪 Teruskan berusaha!";
+ $("murid").textContent=
+ $("nama").value+" | "+$("kelas").value;
+
+ const l=jawapan.slice(0,7).filter(
+  (v,i)=>v===soalan[i][2]).length;
+ const s=jawapan.slice(7,14).filter(
+  (v,i)=>v===soalan[i+7][2]).length;
+ const t=jawapan.slice(14).filter(
+  (v,i)=>v===soalan[i+14][2]).length;
+
+ $("pecahan").textContent=
+ "Lemah: "+l+"/7 | Sederhana: "+
+ s+"/7 | Tinggi: "+t+"/6";
+
+ $("status").textContent=
+ "Tekan HANTAR MARKAH KE GURU untuk merekod keputusan.";
+
+ // Murid perlu menghantar secara jelas.
 }
+
+async function hantar(){
+ if(sudahHantar||sedangHantar)return;
+
+ sedangHantar=true;
+ $("send").disabled=true;
+ $("status").textContent="Menghantar permintaan...";
+
+ const payload={
+  id:idCubaan,
+  nama:$("nama").value.trim(),
+  kelas:$("kelas").value.trim(),
+  jawapan:jawapan
+ };
+
+ try{
+  // no-cors diperlukan bagi permintaan browser
+  // rentas domain ke Apps Script ContentService.
+  // Ia tidak membolehkan respons dibaca.
+  await fetch(API_URL,{
+   method:"POST",
+   mode:"no-cors",
+   headers:{
+    "Content-Type":"text/plain;charset=utf-8"
+   },
+   body:JSON.stringify(payload)
+  });
+
+  sudahHantar=true;
+  $("status").textContent=
+   "Permintaan telah dihantar dari browser. "+
+   "Penerimaan BELUM dapat disahkan. "+
+   "Guru perlu semak Google Sheets.";
+
+  $("send").textContent="PERMINTAAN DIHANTAR";
+
+ }catch(err){
+  $("status").textContent=
+   "Ralat rangkaian. Cuba hantar semula atau "+
+   "salin keputusan dan maklumkan guru.";
+  $("send").disabled=false;
+ }finally{
+  sedangHantar=false;
+ }
+}
+
 function salin(){
-const betul=skor/5;
-const teks="MISI WARTAWAN CILIK\nNama: "+$("nama").value+"\nKelas: "+$("kelas").value+"\nMarkah: "+skor+"/100\nBetul: "+betul+"/20";
-if(navigator.clipboard&&window.isSecureContext){
-navigator.clipboard.writeText(teks).then(()=>alert("Keputusan disalin!")).catch(()=>prompt("Salin keputusan ini:",teks));
-}else{prompt("Salin keputusan ini:",teks);}
-}
-function lihat(){
-const kotak=$("laporan");
-kotak.classList.toggle("hidden");
-if(kotak.classList.contains("hidden"))return;
-let html="<h3>Laporan Program Gotong-royong Perdana Sekolah</h3>";
-const perenggan=[0,5,10,15,18];
-soalan.forEach((s,i)=>{
-if(perenggan.includes(i))html+="<p>";
-html+=s[0].replace("______","<b>"+s[1][s[2]]+"</b>")+" ";
-if([4,9,14,17,19].includes(i))html+="</p>";
-});
-html+="<p style='text-align:right'>Disediakan oleh:<br><b>"+
-escapeHTML($("nama").value)+"</b><br>Wartawan Cilik</p>";
-kotak.innerHTML=html;
-}
-function escapeHTML(s){
-return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+ const teks=
+ "MISI WARTAWAN CILIK\n"+
+ "Nama: "+$("nama").value+"\n"+
+ "Kelas: "+$("kelas").value+"\n"+
+ "Markah paparan: "+skor+"/100\n"+
+ "ID Cubaan: "+idCubaan;
+
+ if(navigator.clipboard&&window.isSecureContext){
+  navigator.clipboard.writeText(teks).then(
+   ()=>alert("Keputusan disalin."),
+   ()=>prompt("Salin teks:",teks)
+  );
+ }else{
+  prompt("Salin teks:",teks);
+ }
 }
 </script>
 </body>
